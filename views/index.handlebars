@@ -1,38 +1,34 @@
-<h1>Burgers!</h1>
-
-<h2>Eat my burgers - they're delicious!</h2>
+<img class="burger" src="https://png.pngtree.com/element_origin_min_pic/17/04/06/7a609d5ba30bfe5ca1abcd418d7c95d6.jpg"/><h1 class="center">Eat my burgers - they're delicious!</h1>
 {{!-- Setup the index.handlebars to have the template that Handlebars can render onto. --}}
-<ul>
+
+
+<h2 class="left">Burgers that need to be devoured!:</h2>
+
+<ul class="left list"> 
   {{#each burgers}}
     {{#unless devoured}}
-      {{burger devoured=true}}
+      {{> burgers/burger-block devoured=true}}
     {{/unless}}
   {{/each}}
 </ul>
 
-<h2>Burgers that need to be devoured!</h2>
-
-<ul>
+<ul class="right list">
   {{#each burgers}}
     {{#if devoured}}
-      {{ burger devoured=false}}
+      {{> burgers/burger-block devoured=false}}
     {{/if}}
   {{/each}}
 </ul>
 
-<h2>Add a Burger</h2>
-<form class="create-form">
+<h2 class="center">Add a Burger</h2>
+<form class="create-form center">
 
-  <div class="form-group">
-    <label for="burger">Burger Name:</label>
+  <div class="form-group center">
+    <label for="burger" class="center">Burger Name:</label>
+    <br><br>
     <input type="text" id="burger" name="name">
   </div>
-
-  <div class="form-group">
-    <label for="devoured">Hungry?</label><br>
-    <input type="radio" name="devoured" value="1" checked> Devoured!<br>
-    <input type="radio" name="devoured" value="0"> Eat Again
-  </div>
+  <br>
 {{!-- Create a button in index.handlebars that will submit the user input into the database. --}}
-  <button type="submit">Add Burger</button>
+  <button id="submit" class="add">Add Burger</button>
 </form>
