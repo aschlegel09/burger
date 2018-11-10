@@ -2,7 +2,7 @@
 {{!-- Setup the index.handlebars to have the template that Handlebars can render onto. --}}
 
 
-<h2 class="left">Burgers that need to be devoured!:</h2>
+<h2 class="left">Burgers that need to be devoured:</h2>
 
 <ul class="left list"> 
   {{#each burgers}}
@@ -12,7 +12,7 @@
   {{/each}}
 </ul>
 {{!-- //burgers/burger-block accesses partial hbrs and table name --}}
-<ul class="right list">
+<ul id="eaten" class="right list">
   {{#each burgers}}
     {{#if devoured}}
       {{> burgers/burger-block devoured=false}}
@@ -32,3 +32,9 @@
 {{!-- Create a button in index.handlebars that will submit the user input into the database. --}}
   <button id="submit" class="add">Add Burger</button>
 </form>
+<br><br>
+<div class="container center">
+  <button id="clear">
+    Clear Eaten Burgers
+  </button>
+</div>

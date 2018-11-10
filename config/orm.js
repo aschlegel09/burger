@@ -17,8 +17,7 @@ function objToSql(ob) {
     var value = ob[key];
     // check to skip hidden properties
     if (Object.hasOwnProperty.call(ob, key)) {
-
-        if (typeof value === "string" && value.indexOf(" ") >= 0) {
+      if (typeof value === "string" && value.indexOf(" ") >= 0) {
         value = "'" + value + "'";
       }
       arr.push(key + "=" + value);
@@ -38,8 +37,8 @@ var orm = {
       cb(result);
     });
   },
-  create: function(table, cols, vals, cb) {
-    var queryString = "INSERT INTO " + table;
+  create: function(burgers, cols, vals, cb) {
+    var queryString = "INSERT INTO " + burgers;
 
     queryString += " (";
     queryString += cols.toString();
@@ -58,11 +57,11 @@ var orm = {
       cb(result);
     });
   },
-  update: function(table, objColVals, condition, cb) {
-    var queryString = "UPDATE " + table;
+  update: function(burgers, devoured, condition, cb) {
+    var queryString = "UPDATE " + burgers;
 
     queryString += " SET ";
-    queryString += objToSql(objColVals);
+    queryString += objToSql(devoured);
     queryString += " WHERE ";
     queryString += condition;
 
