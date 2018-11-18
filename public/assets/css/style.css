@@ -32,3 +32,16 @@ body {
     padding-bottom: 10px;
 }
 
+.done {
+  color: grey;
+    
+}
+
+.done,
+.done[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+  padding: 2px 2px 2px 2px;
+  
+}

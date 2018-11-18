@@ -28,28 +28,28 @@ function objToSql(ob) {
 
 // Object for all our SQL statement functions.
 var orm = {
-  all: function(tableInput, cb) {
-    var queryString = "SELECT * FROM " + tableInput + ";";
-    connection.query(queryString, function(err, result) {
+  selectAll: function(table, cb) {
+    var queryString = "SELECT * FROM ??;";
+    connection.query(queryString, [table], function(err, result) {
       if (err) {
         throw err;
       }
       cb(result);
     });
   },
-  create: function(burgers, cols, vals, cb) {
-    var queryString = "INSERT INTO " + burgers;
+  insertOne: function(table, objCol, objData, cb) {
+    var queryString = "INSERT INTO ?? (??) VALUES (?);";
 
-    queryString += " (";
-    queryString += cols.toString();
-    queryString += ") ";
-    queryString += "VALUES (";
-    queryString += printQuestionMarks(vals.length);
-    queryString += ") ";
+    // queryString += " (";
+    // queryString += cols.toString();
+    // queryString += ") ";
+    // queryString += "VALUES (";
+    // queryString += printQuestionMarks(vals.length);
+    // queryString += ") ";
 
     console.log(queryString);
 
-    connection.query(queryString, vals, function(err, result) {
+    connection.query(queryString, [table, objCol, objData], function(err, result) {
       if (err) {
         throw err;
       }
@@ -57,16 +57,17 @@ var orm = {
       cb(result);
     });
   },
-  update: function(burgers, devoured, condition, cb) {
-    var queryString = "UPDATE " + burgers;
 
-    queryString += " SET ";
-    queryString += objToSql(devoured);
-    queryString += " WHERE ";
-    queryString += condition;
+  updateOne: function(table, objCol, objData, conditionCol, conditionData, cb) {
+    var queryString = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
+
+    // queryString += " SET ";
+    // queryString += objToSql(devoured);
+    // queryString += " WHERE ";
+    // queryString += condition;
 
     console.log(queryString);
-    connection.query(queryString, function(err, result) {
+    connection.query(queryString, [table, objCol, objData, conditionCol, conditionData], function(err, result) {
       if (err) {
         throw err;
       }
