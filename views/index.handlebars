@@ -7,7 +7,7 @@
 <ul class="left list"> 
   {{#each burgers}}
     {{#unless devoured}}
-      {{> burgers/burger-block devoured=true}}
+      {{> burgers/burger-block}}
     {{/unless}}
   {{/each}}
 </ul>
@@ -15,7 +15,7 @@
 <ul id="eaten" class="right list">
   {{#each burgers}}
     {{#if devoured}}
-      {{> burgers/burger-block devoured=false}}
+       <div>{{id}}. {{burger_name}}</div>
     {{/if}}
   {{/each}}
 </ul>
@@ -33,8 +33,4 @@
   <button id="submit" class="add">Add Burger</button>
 </form>
 <br><br>
-<div class="container center">
-  <button id="clear">
-    Clear Eaten Burgers
-  </button>
 </div>
